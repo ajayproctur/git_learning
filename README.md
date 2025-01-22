@@ -1,2 +1,2 @@
-# git_learning
-Repo for learning git
+# First git Repository
+It is meant for learning purpose.
