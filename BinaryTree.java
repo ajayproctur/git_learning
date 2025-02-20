@@ -1,4 +1,8 @@
 
+import java.util.LinkedList;
+import java.util.Queue;
+
+
 public class BinaryTree {
 
     //Node class
@@ -123,10 +127,25 @@ public class BinaryTree {
         if(node==null) return;
         if(level==1){
             System.out.print(node.val+" ");
-
+            return;
         }
         nthLevel(node.left, level-1);
         nthLevel(node.right, level-1);
+    }
+
+    // Level Order Traversal(BFS)
+    public static void bfs(Node node){
+        Queue<Node> q=new LinkedList<>();
+        if(node!=null){
+            q.add(node);
+        }
+        while(q.size()>0){
+            Node n=q.peek();
+            if(n.left!=null) q.add(n.left);
+            if(n.right!=null) q.add(n.right);
+            System.out.print(n.val+" ");
+            q.remove();
+        }
     }
 
     public static void main(String[] args) {
@@ -152,7 +171,8 @@ public class BinaryTree {
         // preOrder(root);
         // inOrder(root);
         // postOrder(root);
-        nthLevel(root, 3);
+        // nthLevel(root, 3);
+        bfs(root);
     }
 
 }
