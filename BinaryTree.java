@@ -87,6 +87,36 @@ public class BinaryTree {
         return 1 + Math.max(height(node.left), height(node.right));
     }
 
+    //Pre-Order traversal->print root ->left subtree->right subtree
+    public static void preOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        System.out.print(node.val + "  ");
+        preOrder(node.left);
+        preOrder(node.right);
+    }
+
+    //In-Order traversal->left subtree->print root ->right subtree
+    public static void inOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        inOrder(node.left);
+        System.out.print(node.val + "  ");
+        inOrder(node.right);
+    }
+
+    //Post-Order traversal->left subtree->right subtree->print root 
+    public static void postOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        postOrder(node.left);
+        postOrder(node.right);
+        System.out.print(node.val + "  ");
+    }
+
     public static void main(String[] args) {
         Node root = new Node(-2);
         Node a = new Node(-4);
@@ -100,13 +130,16 @@ public class BinaryTree {
         a.right = c;
         d.right = e;
         // display(root);
-        displayOne(root);
-        System.out.println("Size: "+size(root));
-        System.out.println("Sum: "+sum(root));
-        System.out.println("Max: "+max(root));
-        System.out.println("Height: "+height(root));
-        System.out.println("Min: "+min(root));
-        System.out.println("Product: "+product(root));
+        // displayOne(root);
+        // System.out.println("Size: "+size(root));
+        // System.out.println("Sum: "+sum(root));
+        // System.out.println("Max: "+max(root));
+        // System.out.println("Height: "+height(root));
+        // System.out.println("Min: "+min(root));
+        // System.out.println("Product: "+product(root));
+        // preOrder(root);
+        // inOrder(root);
+        postOrder(root);
     }
 
 }
