@@ -117,6 +117,18 @@ public class BinaryTree {
         System.out.print(node.val + "  ");
     }
 
+    //Nth-level elements
+
+    public static void nthLevel(Node node,int level){
+        if(node==null) return;
+        if(level==1){
+            System.out.print(node.val+" ");
+
+        }
+        nthLevel(node.left, level-1);
+        nthLevel(node.right, level-1);
+    }
+
     public static void main(String[] args) {
         Node root = new Node(-2);
         Node a = new Node(-4);
@@ -139,7 +151,8 @@ public class BinaryTree {
         // System.out.println("Product: "+product(root));
         // preOrder(root);
         // inOrder(root);
-        postOrder(root);
+        // postOrder(root);
+        nthLevel(root, 3);
     }
 
 }
