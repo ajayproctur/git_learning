@@ -2,7 +2,6 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
-
 public class BinaryTree {
 
     //Node class
@@ -21,7 +20,6 @@ public class BinaryTree {
             return "Node [val=" + val + ", left=" + left + ", right=" + right + "]";
         }
 
-        
     }
 
     //Display method
@@ -129,44 +127,76 @@ public class BinaryTree {
     }
 
     //Nth-level elements
-
-    public static void nthLevel(Node node,int level){
-        if(node==null) return;
-        if(level==1){
-            System.out.print(node.val+" ");
+    public static void nthLevel(Node node, int level) {
+        if (node == null) {
             return;
         }
-        nthLevel(node.left, level-1);
-        nthLevel(node.right, level-1);
+        if (level == 1) {
+            System.out.print(node.val + " ");
+            return;
+        }
+        nthLevel(node.left, level - 1);
+        nthLevel(node.right, level - 1);
     }
 
     // Level Order Traversal(BFS)
-    public static void bfs(Node node){
-        Queue<Node> q=new LinkedList<>();
-        if(node!=null){
+    public static void bfs(Node node) {
+        Queue<Node> q = new LinkedList<>();
+        if (node != null) {
             q.add(node);
         }
-        while(q.size()>0){
-            Node n=q.peek();
-            if(n.left!=null) q.add(n.left);
-            if(n.right!=null) q.add(n.right);
-            System.out.print(n.val+" ");
+        while (q.size() > 0) {
+            Node n = q.peek();
+            if (n.left != null) {
+                q.add(n.left);
+            }
+            if (n.right != null) {
+                q.add(n.right);
+            }
+            System.out.print(n.val + " ");
             q.remove();
         }
     }
 
-    public static int diameterOfBinaryTree(Node root){
-        if(root==null || root.left==null && root.right==null){
+    public static int diameterOfBinaryTree(Node root) {
+        if (root == null || root.left == null && root.right == null) {
             return 0;
         }
-        int leftD=diameterOfBinaryTree(root.left);
-        int rightD=diameterOfBinaryTree(root.right);
-        int mid=height(root.left)+height(root.right);
-        if(root.left!=null) mid++;
-        if(root.right!=null) mid++;
-        int max=Math.max(leftD,Math.max(rightD,mid));
+        int leftD = diameterOfBinaryTree(root.left);
+        int rightD = diameterOfBinaryTree(root.right);
+        int mid = height(root.left) + height(root.right);
+        if (root.left != null) {
+            mid++;
+        }
+        if (root.right != null) {
+            mid++;
+        }
+        int max = Math.max(leftD, Math.max(rightD, mid));
         return max;
 
+    }
+
+    public static boolean isBalanced(Node root) {
+        if (root == null || root.left == null && root.right == null) {
+            return true;
+        }
+        // if(Math.abs(height(root.left)-height(root.right))>1){
+        //     return false;
+        // }
+        // return isBalanced(root.left) && isBalanced(root.right);
+        int lh = height(root.left);
+        if (root.left != null) {
+            lh++;
+        }
+        int rh = height(root.right);
+        if (root.right != null) {
+            rh++;
+        }
+        int d = Math.abs(lh - rh);
+        if (d > 1) {
+            return false;
+        }
+        return isBalanced(root.left) && isBalanced(root.right);
     }
 
     public static void main(String[] args) {
