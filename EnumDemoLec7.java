@@ -101,3 +101,84 @@ public class EnumDemoLec7 {
 //     }
 
 // }
+
+// --------------------------------------------------------------------------
+
+
+
+/*
+ package com.proc.exam.exception;
+
+import java.util.ArrayList;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@ControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(ExamException.class)
+    public ResponseEntity<Object> handleCustomException(ExamException ex) {
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST.value(), ex.getErrorResponses(), ex.getMessage(), null);
+        return new ResponseEntity<>(apiError, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Object> handleCustomException(Exception ex) {
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST.value(), new ArrayList<>(), ex.getMessage(), null);
+        return new ResponseEntity<>(apiError, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<Object> handleCustomException(RuntimeException ex) {
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST.value(), new ArrayList<>(), ex.getMessage(), null);
+        return new ResponseEntity<>(apiError, HttpStatus.BAD_REQUEST);
+    }
+}
+*/
+/*
+ package com.proc.exam.exception;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ExamException extends RuntimeException {
+
+    private static final long   serialVersionUID = 1L;
+
+    private List<ErrorResponse> errorResponses   = new ArrayList<>();
+
+    public ExamException() {
+        super();
+    }
+
+    public ExamException(String message) {
+        super(message);
+    }
+
+    public ExamException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public ExamException(ErrorResponse errorResponse) {
+        this();
+        addErrorResponse(errorResponse);
+    }
+
+    public ExamException(String message, ErrorResponse errorResponse) {
+        super(message);
+        addErrorResponse(errorResponse);
+    }
+
+    public void addErrorResponse(ErrorResponse errorResponse) {
+        errorResponses.add(errorResponse);
+    }
+
+    public List<ErrorResponse> getErrorResponses() {
+        return errorResponses;
+    }
+}
+
+*/
