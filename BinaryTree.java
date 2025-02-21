@@ -15,6 +15,13 @@ public class BinaryTree {
         public Node(int val) {
             this.val = val;
         }
+
+        @Override
+        public String toString() {
+            return "Node [val=" + val + ", left=" + left + ", right=" + right + "]";
+        }
+
+        
     }
 
     //Display method
@@ -148,6 +155,20 @@ public class BinaryTree {
         }
     }
 
+    public static int diameterOfBinaryTree(Node root){
+        if(root==null || root.left==null && root.right==null){
+            return 0;
+        }
+        int leftD=diameterOfBinaryTree(root.left);
+        int rightD=diameterOfBinaryTree(root.right);
+        int mid=height(root.left)+height(root.right);
+        if(root.left!=null) mid++;
+        if(root.right!=null) mid++;
+        int max=Math.max(leftD,Math.max(rightD,mid));
+        return max;
+
+    }
+
     public static void main(String[] args) {
         Node root = new Node(-2);
         Node a = new Node(-4);
@@ -172,7 +193,8 @@ public class BinaryTree {
         // inOrder(root);
         // postOrder(root);
         // nthLevel(root, 3);
-        bfs(root);
+        // bfs(root);
+        diameterOfBinaryTree(root);
     }
 
 }
