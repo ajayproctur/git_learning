@@ -272,6 +272,4 @@ public class BinaryTree {
         // bfs(root);
         diameterOfBinaryTree(root);
     }
-
-
 }
