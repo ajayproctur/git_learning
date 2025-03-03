@@ -228,6 +228,23 @@ public class BinaryTree {
             invertTree(root.right);
             return root;
     }
+
+     public boolean isSymmetric(Node root) {
+        return isSameTree(root.left,invertTree(root.right));
+    }
+    public boolean isSameTree(Node p, Node q) {
+
+        if (p == null && q == null) {
+            return true;
+        }
+        if (p == null || q == null) {
+            return false;
+        }
+        if (p.val != q.val) {
+            return false;
+        }
+        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+    }
     public static void main(String[] args) {
         Node root = new Node(-2);
         Node a = new Node(-4);
@@ -256,18 +273,5 @@ public class BinaryTree {
         diameterOfBinaryTree(root);
     }
 
-    public boolean isSameTree(Node p, Node q) {
-
-        if (p == null && q == null) {
-            return true;
-        }
-        if (p == null || q == null) {
-            return false;
-        }
-        if (p.val != q.val) {
-            return false;
-        }
-        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
-    }
 
 }
